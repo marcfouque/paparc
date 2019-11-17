@@ -33,6 +33,58 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ime202.isped/notifCancer#atteint -->
+
+    <owl:ObjectProperty rdf:about="http://www.ime202.isped/notifCancer#atteint">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.ime202.isped/notifCancer#estAtteintDe"/>
+        <rdfs:domain rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+        <rdfs:range rdf:resource="http://www.ime202.isped/notifCancer#Patient"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ime202.isped/notifCancer#estAtteintDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.ime202.isped/notifCancer#estAtteintDe">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.ime202.isped/notifCancer#Patient"/>
+        <rdfs:range rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ime202.isped/notifCancer#estDeType -->
+
+    <owl:ObjectProperty rdf:about="http://www.ime202.isped/notifCancer#estDeType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+        <rdfs:range rdf:resource="http://www.ime202.isped/notifCancer#GroupeMorpho"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ime202.isped/notifCancer#estLocalise -->
+
+    <owl:ObjectProperty rdf:about="http://www.ime202.isped/notifCancer#estLocalise">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+        <rdfs:range rdf:resource="http://www.ime202.isped/notifCancer#GroupeTopo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -116,9 +168,32 @@
     
 
 
+    <!-- http://www.ime202.isped/notifCancer#BronchusAndLung -->
+
+    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#BronchusAndLung">
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#RespiratoryOrgans"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.ime202.isped/notifCancer#Cancer -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#Cancer"/>
+    
+
+
+    <!-- http://www.ime202.isped/notifCancer#CancerMultiple -->
+
+    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#CancerMultiple">
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ime202.isped/notifCancer#estLocalise"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.ime202.isped/notifCancer#SystemicCancer"/>
+    </owl:Class>
     
 
 
@@ -179,7 +254,7 @@
     <!-- http://www.ime202.isped/notifCancer#Hypopharynx -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#Hypopharynx">
-        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#NoseOrgans"/>
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#OrlOrgans"/>
     </owl:Class>
     
 
@@ -236,9 +311,17 @@
     
 
 
-    <!-- http://www.ime202.isped/notifCancer#NoseOrgans -->
+    <!-- http://www.ime202.isped/notifCancer#NeoplasmsCancer -->
 
-    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#NoseOrgans">
+    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#NeoplasmsCancer">
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ime202.isped/notifCancer#OrlOrgans -->
+
+    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#OrlOrgans">
         <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#GroupeTopo"/>
     </owl:Class>
     
@@ -247,7 +330,7 @@
     <!-- http://www.ime202.isped/notifCancer#Oropharynx -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#Oropharynx">
-        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#NoseOrgans"/>
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#OrlOrgans"/>
     </owl:Class>
     
 
@@ -255,7 +338,7 @@
     <!-- http://www.ime202.isped/notifCancer#OtherAndIll-DefinedSitesInLipOralCavityAndPharynx -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#OtherAndIll-DefinedSitesInLipOralCavityAndPharynx">
-        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#NoseOrgans"/>
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#OrlOrgans"/>
     </owl:Class>
     
 
@@ -324,10 +407,18 @@
     
 
 
+    <!-- http://www.ime202.isped/notifCancer#PrimaryCancer -->
+
+    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#PrimaryCancer">
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.ime202.isped/notifCancer#PyriformSinus -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#PyriformSinus">
-        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#NoseOrgans"/>
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#OrlOrgans"/>
     </owl:Class>
     
 
@@ -390,6 +481,33 @@
     
 
 
+    <!-- http://www.ime202.isped/notifCancer#SystemicCancer -->
+
+    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#SystemicCancer">
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ime202.isped/notifCancer#estDeType"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#B-CellNeoplasms"/>
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#HistiocytesAndAccessoryLymphoidCells"/>
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#HodgkinLymphoma"/>
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#KaposiSarcoma"/>
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Master-CellTumours"/>
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Myeloid"/>
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#T-CellAndNK-CellNeoplasms"/>
+                            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#UnspecifiedTypes"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://www.ime202.isped/notifCancer#T-CellAndNK-CellNeoplasms -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#T-CellAndNK-CellNeoplasms">
@@ -410,14 +528,14 @@
     <!-- http://www.ime202.isped/notifCancer#Tonsil -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#Tonsil">
-        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#NoseOrgans"/>
+        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#OrlOrgans"/>
     </owl:Class>
     
 
 
-    <!-- http://www.ime202.isped/notifCancer#TracheaBronchusAndLung -->
+    <!-- http://www.ime202.isped/notifCancer#Trachea -->
 
-    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#TracheaBronchusAndLung">
+    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#Trachea">
         <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#RespiratoryOrgans"/>
     </owl:Class>
     
@@ -483,13 +601,14 @@
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Bones"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#BonesJointsAndArticularCartilageOfLimbs"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#BonesJointsAndArticularCartilageOfOtherAndUnspecifiedSites"/>
+            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#BronchusAndLung"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#FloorOfMouth"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Gallbladder"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Gum"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Hypopharynx"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Lip"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#MouthOrgans"/>
-            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#NoseOrgans"/>
+            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#OrlOrgans"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Oropharynx"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#OtherAndIll-DefinedSitesInLipOralCavityAndPharynx"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#OtherAndUnspecifiedPartsOfBiliaryTract"/>
@@ -505,7 +624,6 @@
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#RespiratoryOrgans"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Tongue"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Tonsil"/>
-            <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#TracheaBronchusAndLung"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#Ureter"/>
             <rdf:Description rdf:about="http://www.ime202.isped/notifCancer#UrinaryOrgans"/>
         </owl:members>
