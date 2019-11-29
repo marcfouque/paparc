@@ -311,14 +311,6 @@
     
 
 
-    <!-- http://www.ime202.isped/notifCancer#NeoplasmsCancer -->
-
-    <owl:Class rdf:about="http://www.ime202.isped/notifCancer#NeoplasmsCancer">
-        <rdfs:subClassOf rdf:resource="http://www.ime202.isped/notifCancer#Cancer"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.ime202.isped/notifCancer#OrlOrgans -->
 
     <owl:Class rdf:about="http://www.ime202.isped/notifCancer#OrlOrgans">
