@@ -4,11 +4,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.FunctionalSyntaxDocumentFormat;
 import org.semanticweb.owlapi.model.*;
+
+import algo.Patient;
+import outils.CoupleTopoMorpho;
+import outils.Groupe;
 
 //import org.semanticweb.owlapi.model.OWLOntology;
 //import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -16,36 +21,9 @@ import org.semanticweb.owlapi.model.*;
 public class CreerOnto {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Groupe grou = new Groupe();
 		ArrayList<CoupleTopoMorpho> pcg = grou.getPCG();
-		//System.out.println(grou.getGT());
-		//System.out.println(grou.getGM());
-		System.out.println(pcg.size());
-		System.out.println(pcg.get(45));
-		System.out.println(grou.getGM());
-		System.out.println(grou.getGT());
 		
-		HashMap<String,ArrayList<String>> patients = new HashMap<String,ArrayList<String>>();
-		patients.put("patient1",new ArrayList<String>(Arrays.asList("C40.1M9870/3","C39.1M9040/3","C42.1M8840/3")));
-		patients.put("patient2",new ArrayList<String>(Arrays.asList("C42.1M9870/3","C42.1M9040/3","C42.1M8840/3")));
-		patients.put("patient3",new ArrayList<String>(Arrays.asList("C40.1M9570/3","C12.1M9840/3","C12.1M8840/3")));
-		patients.put("patient4",new ArrayList<String>(Arrays.asList("C40.1M9040/3","C30.1M9040/3","C37.1M9040/3")));
-		
-		ArrayList<Patient> listePatients = new ArrayList<Patient>();
-	    //Consumer<String> cimo3Couple = (String x) ->new CoupleTopoMorpho(grou.getGrpTopoFromCimo3(x.split("M")[0]),grou.getGrpMorphoFromCimo3(x.split("M")[1].substring(0, 4)));
-	    
-		
-		
-		for(String p : patients.keySet()){
-				ArrayList<CoupleTopoMorpho>temp = new ArrayList<CoupleTopoMorpho>();
-				for(String c : patients.get(p)) {
-					temp.add(new CoupleTopoMorpho(grou.getGrpTopoFromCimo3(c.split("M")[0]),grou.getGrpMorphoFromCimo3(c.split("M")[1].substring(0, 4))));
-				}
-			   listePatients.add(new Patient(p,temp));
-			}
-		
-		/*
         try {
         	//creation onto vide
         	OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -119,7 +97,6 @@ public class CreerOnto {
         }catch(Exception e) {
         	 e.printStackTrace();
         }
-      */
 		
 	}
 
