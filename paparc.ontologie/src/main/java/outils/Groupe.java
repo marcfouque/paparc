@@ -3,11 +3,15 @@ package outils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+
+import org.json.simple.JSONArray;
 
 public class Groupe {
 	private ArrayList <String[]> arrTopo;
@@ -15,72 +19,72 @@ public class Groupe {
 	private ArrayList <String> listCodeTopo;
 	private ArrayList <String> listCodeMorpho; 
 	private ArrayList <ArrayList> listCimo3;
-	
+
 	public Groupe() {
-		
-		
+
+
 		this.arrTopo = new ArrayList<String[]>();
 		this.arrMorpho = new ArrayList<String[]>();
 
 		//File directory = new File("./");
 		//System.out.println(directory.getAbsolutePath());
-		   
+
 		BufferedReader reader = null;
 		try {
-		    File fichier = new File("./src/main/resources/CIMO3_TOPO.txt");
-		    reader = new BufferedReader(new FileReader(fichier));
+			File fichier = new File("./src/main/resources/CIMO3_TOPO.txt");
+			reader = new BufferedReader(new FileReader(fichier));
 
-		    String line;
-		    line = reader.readLine(); //premiere ligne out
-		    while ((line = reader.readLine()) != null) {
-		    	this.arrTopo.add(line.split("[|]"));
-		    }
+			String line;
+			line = reader.readLine(); //premiere ligne out
+			while ((line = reader.readLine()) != null) {
+				this.arrTopo.add(line.split("[|]"));
+			}
 
 		} catch (IOException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		} finally {
-		    try {
-		        reader.close();
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
+			try {
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		reader = null;
 		try {
-		    File fichier = new File("./src/main/resources/CIMO3_MORPHO.txt");
-		    reader = new BufferedReader(new FileReader(fichier));
+			File fichier = new File("./src/main/resources/CIMO3_MORPHO.txt");
+			reader = new BufferedReader(new FileReader(fichier));
 
-		    String line;
-		    line = reader.readLine(); //premiere ligne out
-		    while ((line = reader.readLine()) != null) {
-		    	this.arrMorpho.add(line.split("[|]"));
-		    }
+			String line;
+			line = reader.readLine(); //premiere ligne out
+			while ((line = reader.readLine()) != null) {
+				this.arrMorpho.add(line.split("[|]"));
+			}
 
 		} catch (IOException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		} finally {
-		    try {
-		        reader.close();
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
+			try {
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
+
 		listCimo3 = new ArrayList();
 		listCimo3.add(new ArrayList<String>());
 		listCimo3.add(new ArrayList<String>());
 		for(int i = 0;i<arrMorpho.size();i++) {
-            listCimo3.get(1).add(arrMorpho.get(i)[0].substring(0, 4));
-    	}
+			listCimo3.get(1).add(arrMorpho.get(i)[0].substring(0, 4));
+		}
 		for(int j = 0;j<arrTopo.size();j++) {
-            listCimo3.get(0).add(arrTopo.get(j)[0]);
-    	}
-		
+			listCimo3.get(0).add(arrTopo.get(j)[0]);
+		}
+
 		listCodeTopo = getGroupeTopo();
 		listCodeMorpho = getGroupeMorpho();
-		
+
 	}
-	
+
 	private ArrayList getGroupeTopo(){
 		HashMap htopo = new HashMap();
 		for (int i = 0; i < arrTopo.size(); i++) {
@@ -96,7 +100,7 @@ public class Groupe {
 		}
 		return new ArrayList(hmorpho.keySet());
 	}
-	
+
 	public ArrayList<String> getGT(){return listCodeTopo;}
 	public ArrayList<String> getGM(){return listCodeMorpho;}
 	public ArrayList<CoupleTopoMorpho> getPCG(){
@@ -121,5 +125,75 @@ public class Groupe {
 		if(ind!=-1)return arrMorpho.get(ind)[3];
 		else return "nope";
 	}
-	
+
+	public void sqlTopo() {
+		try {
+			FileWriter fw = new FileWriter("./src/main/resources/sqlTopo.sql");
+			
+			//creation table
+			fw.write("DROP TABLE IF EXISTS topoCimo3_groupeIACRTopo;\n");
+			fw.write("CREATE TABLE topoCimo3_groupeIACRTopo( \n");
+			fw.write("\ttopoCimo3 varchar(7) NOT NULL, \n");
+			fw.write("\ttopoIACR int(2) DEFAULT NULL, \n");
+			fw.write("\tPRIMARY KEY (topoCimo3) \n");
+			fw.write(") ENGINE=InnoDB DEFAULT CHARSET=latin1; \n\n");
+			
+			//insertion valeurs
+			fw.write("INSERT INTO topoCimo3_groupeIACRTopo (topoCimo3, topoIACR) VALUES \n");
+			
+			for(int i =0; i<arrTopo.size(); i++) {
+				if(i==arrTopo.size()-1)fw.write("\t('"+arrTopo.get(i)[0]+"',"+arrTopo.get(i)[7]+"); \n");
+				else fw.write("('"+arrTopo.get(i)[0]+"',"+arrTopo.get(i)[7]+"), \n");
+			}
+			
+			fw.close();
+		}
+		catch(Exception e) {
+			 e.printStackTrace();
+		}
+			
+	}
+	public void sqlMorpho() {
+		try {
+			FileWriter fw = new FileWriter("./src/main/resources/sqlMorpho.sql");
+			
+			//creation table
+			fw.write("DROP TABLE IF EXISTS morphoCimo3_groupeIACRMorpho;\n");
+			fw.write("CREATE TABLE morphoCimo3_groupeIACRMorpho( \n");
+			fw.write("\tmorphoCimo3 varchar(7) NOT NULL, \n");
+			fw.write("\tmorphoIACR int(2) DEFAULT NULL, \n");
+			fw.write("\tPRIMARY KEY (morphoCimo3) \n");
+			fw.write(") ENGINE=InnoDB DEFAULT CHARSET=latin1; \n\n");
+			
+			//insertion valeurs
+			fw.write("INSERT INTO morphoCimo3_groupeIACRMorpho (morphoCimo3, morphoIACR) VALUES \n");
+			
+			for(int i =0; i<arrMorpho.size(); i++) {
+				if(i==arrMorpho.size()-1)fw.write("\t('"+arrMorpho.get(i)[0]+"',"+arrMorpho.get(i)[3]+"); \n");
+				else fw.write("('"+arrMorpho.get(i)[0]+"',"+arrMorpho.get(i)[3]+"), \n");
+			}
+			
+			fw.close();
+		}
+		catch(Exception e) {
+			 e.printStackTrace();
+		}
+	}
+	public void topoLibJSON() {
+		//fait à l'ancienne avec des regex
+		/*
+		ArrayList<String> temp = new ArrayList<String>();
+		JSONArray jsArray = new JSONArray();
+		
+		try {
+		//FileWriter fw = new FileWriter("./src/main/resources/jsonTopo.json");
+		
+		jsArray.writeJSONString(temp, fw);
+		fw.close();
+		}
+		catch(Exception e) {
+			 e.printStackTrace();
+		}
+		*/
+	}
 }
