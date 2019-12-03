@@ -33,6 +33,12 @@ public class CoupleTopoMorpho implements Comparable<CoupleTopoMorpho> {
 	public boolean memeMorpho(CoupleTopoMorpho c) {
 		return c.getM()==gMorpho;
 	}
+	public boolean morphoRetrieve(int... morpho) {
+		for(int i=0; i<morpho.length;i++) {
+			if(gMorpho==morpho[i])return true;
+		}
+		return false;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {

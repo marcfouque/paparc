@@ -79,12 +79,6 @@ public class Groupe {
 		listCodeTopo = getGroupeTopo();
 		listCodeMorpho = getGroupeMorpho();
 		
-		System.out.println(arrMorpho.get(42)[0]);
-		System.out.println(arrMorpho.get(150)[0]);
-		System.out.println(listCimo3.get(0).size());
-		System.out.println(listCimo3.get(0).get(42));
-		System.out.println(listCimo3.get(1).size());
-		System.out.println(listCimo3.get(1).get(420));
 	}
 	
 	private ArrayList getGroupeTopo(){
