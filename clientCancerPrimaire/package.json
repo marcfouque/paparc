@@ -1,0 +1,15 @@
+{
+  "name": "clientcancerprimaire",
+  "version": "1.0.0",
+  "description": "client du module nouveaux cas potentiels du groupe stage de l' ue ime204",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "paparc",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-cli": "^2.9.6"
+  }
+}
