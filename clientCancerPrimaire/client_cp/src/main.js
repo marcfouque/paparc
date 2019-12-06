@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+require('../node_modules/vue-suggestion/dist/vue-suggestion.css')
+
 Vue.config.productionTip = false
 
 new Vue({
