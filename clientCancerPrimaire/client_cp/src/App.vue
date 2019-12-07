@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <BarreDeRecherche />
-    <Resultat msg="tftyfg"/>
+    <BarreDeRecherche @patient_choisi="changePatientChoisi" />
+    <Resultat :patient="patient"/>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 
   </div>
@@ -12,8 +12,7 @@
 //import HelloWorld from './components/HelloWorld.vue'
 import BarreDeRecherche from './components/BarDeRecherche.vue'
 import Resultat from './components/Resultat.vue'
-//import 'vue-suggestion/dist/vue-suggestion.css';
-//import Testouille from "./components/Testouille.vue"
+
 
 
 export default {
@@ -23,6 +22,26 @@ export default {
     BarreDeRecherche,
     Resultat,
     //Testouille
+  },
+  data () {
+    return {
+      patient: {}
+    }
+  },
+  methods:{
+    changePatientChoisi(e){
+      //a la selection du patient recherche des cancers primaires
+      /*
+     axios.get(`http://....`)
+     .then(response => {
+       //on met tout dans des variables qui sont passées à Resultat
+     })
+     .catch(e => {
+       this.errors.push(e)
+     })
+     */
+      this.patient=e;
+    }
   }
 }
 </script>

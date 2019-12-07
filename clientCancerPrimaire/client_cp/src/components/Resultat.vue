@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2>Les resultats {{msg}}</h2>
+    <h2>Patient {{patient}}</h2>
 
   </div>
 </template>
@@ -9,7 +9,7 @@
 export default {
   name: 'Resultat',
   props: {
-    msg: String
+    patient: Object
   }
 }
 </script>

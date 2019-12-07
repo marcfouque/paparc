@@ -1,12 +1,19 @@
 <template>
-  <div class="hello">
-    <h2>
-      Barre de recherche
-      </h2>
-                  <ItemRecherche :item='{"id":10,"prenom":"marco","nom":"polo"}' />
+  <div class="barrederecherche">
+      <ItemRecherche id="griffin" :item='{"id":10,"prenom":"marco","nom":"polo"}' />
 
-      <VueSuggestion :items="items" v-model="item" :setLabel="setLabel" :itemTemplate="ItemRecherche" @onInputChange="inputChange" @onItemSelected="itemSelected" ></VueSuggestion>
-      {{item}}
+      <VueSuggestion
+        :items="items"
+        v-model="patientSelectionne"
+        :setLabel="setLabel"
+        :itemTemplate="ItemRecherche"
+        @onInputChange="inputChange"
+        @onItemSelected="itemSelected"
+        key="'obj'+obj.key"
+        placeholder="Recherche patient"
+        >
+      </VueSuggestion>
+      {{patientSelectionne}}
       <!--
       -->
   </div>
@@ -24,13 +31,8 @@ export default {
   },
   data () {
     return {
-      item: {id:42,prenom:"amerigo",nom:"vespucci"},
-      items:[
-        { id: 1, nom: 'nom1', prenom:"prenom1"},
-        { id: 2, nom: 'nom2', prenom:"prenom2" },
-        { id: 3, nom: 'nom3', prenom:"prenom3"},
-        { id: 0, nom: 'rrr', prenom:"bbbb"}
-      ],
+      patientSelectionne: "",
+      items:[],
       listePat: [
         { id: 1, nom: 'nom1', prenom:"prenom1"},
         { id: 2, nom: 'nom2', prenom:"prenom2" },
@@ -42,22 +44,78 @@ export default {
   },
   methods: {
     itemSelected (item) {
-      this.item = item;
+      this.patientSelectionne = item;
+
+      this.$emit('patient_choisi', item)
+
+      this.items=[];
+      alert("requete ajax vers l'api pour récupérer les informations du patient")
     },
     setLabel (item) {
       return item.id+" - "+item.prenom+" "+item.nom;
     },
     inputChange (text) {
-      //alert(this.listePat)
-      alert(this.listePat.filter(item => Object.values(item).join("").contains(text)));
-      //this.items = this.listePat.filter(item => (Object.values(item).join("")).contains(text));
+      this.items = this.listePat.filter(item => Object.values(item).join("").toLowerCase().search(text.toLowerCase())!=-1);
     }
+  },
+   created() {
+     //a la creation de l'element recupération liste patient
+     /*
+    axios.get(`http://....`)
+    .then(response => {
+      this.listePat = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+    */
   }
 }
 </script>
 
-<style scoped>
-  h2{
-    background-color:red;
-  }
+<style >
+#griffin{
+  display:none;
+}
+.vue-suggestion .vue-suggestion-input-group .vue-suggestion-input {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  color: #464a4c;
+  outline: none;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid #cecece;
+  border-radius: 0.25rem;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.vue-suggestion-input:focus {
+  border: 1px solid #023d7b;
+}
+.vue-suggestion-list {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-top: none;
+  max-height: 400px;
+  overflow-y: auto;
+  border-bottom: 1px solid #023d7b;
+}
+.vue-suggestion-list-item {
+  cursor: pointer;
+  background-color: #fff;
+  padding: 10px;
+  border-left: 10px solid #023d7b;
+  border-right: 1px solid #023d7b;
+}
+.vue-suggestion-list-item:last-child {
+  border-bottom: none;
+}
+.vue-suggestion-list-item:hover {
+  background-color: #eee;
+}
 </style>

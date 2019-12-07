@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <b>#{{item.id}}</b> -
+  <p >
+    <b>{{item.id}}</b> -
     <span>{{ item.prenom }} </span>
     <span>{{ item.nom }}</span>
-  </div>
+  </p>
 </template>
 
 <script>
@@ -14,3 +14,6 @@ export default {
   }
 }
 </script>
+<style>
+
+</style>
