@@ -67,14 +67,14 @@ public class Patient {
 	    	else if(ajouter && listeCancerPrimaire.contains(new CoupleTopoMorpho(Integer.toString(ctm.getT()), "17")))listeCancerPrimaire.remove(new CoupleTopoMorpho(Integer.toString(ctm.getT()), "17"));
 	    	
 	    	//si topo non specifique et qu'une topo plus spécifique est présente dans la liste de cancers primaires, on n'ajoute pas la topo non-spécifique
-	    	if(ctm.getT()==54) {	//si ctm est de topo 54 (non spécifique)
+	    	if(ctm.getT()==52) {	//si ctm est de topo 52 (non spécifique)
 	    		for(CoupleTopoMorpho cp  : listeCancerPrimaire) {	//recherche de morpho identiques parmi les cancers primaires, 
 	    			if(cp.getM()==ctm.getM())ajouter=false;			//si un existe alors pas d'ajout du cancer non specifique
 	    		}
 	    	}
 	    	//si est ajoutable et topo plus specifique et qu'un cancer non specifique de la meme morpho existe alors suppression du non specifique
-	    	if(ajouter && listeCancerPrimaire.contains(new CoupleTopoMorpho("54", Integer.toString(ctm.getT())))) {
-	    		listeCancerPrimaire.remove(new CoupleTopoMorpho("54", Integer.toString(ctm.getT())));
+	    	if(ajouter && listeCancerPrimaire.contains(new CoupleTopoMorpho("52", Integer.toString(ctm.getM())))) {
+	    		listeCancerPrimaire.remove(new CoupleTopoMorpho("52", Integer.toString(ctm.getM())));
 	    		listBool815.set( ctm.getM()-8, false );
 	    		}
 	    	
@@ -97,9 +97,20 @@ public class Patient {
 		return cancers;
 	}
 	
+	public String printCPP() {
+		String res = "";
+		for(CoupleTopoMorpho c: listeCancerPrimaire) {
+			//res+='('+id+',"'+c.getT()+'","'+c.getM()+'")';
+			res+="("+id+",\""+c.getT()+"\",\""+c.getM()+"\"),\n";
+		}
+		return res;
+	}
+	
 	@Override
 	public String toString() {
 		return "\nPatient : "+this.id+"\n\tliste cancers :\t\t"+listeCancerNonCat.toString()+"\n\tListe cancers Primaire :\t"+listeCancerPrimaire.toString();
 	}
+
+	
 
 }
