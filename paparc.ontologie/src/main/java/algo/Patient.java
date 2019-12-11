@@ -75,7 +75,7 @@ public class Patient {
 	    	//si est ajoutable et topo plus specifique et qu'un cancer non specifique de la meme morpho existe alors suppression du non specifique
 	    	if(ajouter && listeCancerPrimaire.contains(new CoupleTopoMorpho("52", Integer.toString(ctm.getM())))) {
 	    		listeCancerPrimaire.remove(new CoupleTopoMorpho("52", Integer.toString(ctm.getM())));
-	    		listBool815.set( ctm.getM()-8, false );
+	    		if(ctm.getM()>7 && ctm.getM()<16)listBool815.set( ctm.getM()-8, false );
 	    		}
 	    	
 	    	//regle 4.1

@@ -4,18 +4,26 @@
 		"nom":"Armstrong",
 		"cancers":[
 			{
+				"topo":62,
+				"morpho":5 
+			},
+			{
 				"topo":41,
-				"morpho":5
+				"morpho":5 
 			}
 		]
 	},
 	46864786 : {
 		"prenom":"Bernard",
-		"nom":"Tapi",
+		"nom":"Tapie",
 		"cancers":[
 			{
+				"topo":20,
+				"morpho":14 
+			},
+			{
 				"topo":16,
-				"morpho":14
+				"morpho":14 
 			}
 		]
 	},
@@ -25,11 +33,15 @@
 		"cancers":[
 			{
 				"topo":52,
+				"morpho":17 
+			},
+			{
+				"topo":52,
 				"morpho":13
 			},
 			{
 				"topo":31,
-				"morpho":11
+				"morpho":11 
 			}
 		]
 	},
@@ -38,16 +50,24 @@
 		"nom":"Polo",
 		"cancers":[
 			{
+				"topo":10,
+				"morpho":14 
+			},
+			{
 				"topo":22,
-				"morpho":8
+				"morpho":8 
 			},
 			{
 				"topo":10,
-				"morpho":11
+				"morpho":11 
 			},
 			{
 				"topo":34,
-				"morpho":5
+				"morpho":5 
+			},
+			{
+				"topo":10,
+				"morpho":17 
 			}
 		]
 	},
@@ -57,11 +77,23 @@
 		"cancers":[
 			{
 				"topo":40,
-				"morpho":15
+				"morpho":15 
+			},
+			{
+				"topo":17,
+				"morpho":15 
 			},
 			{
 				"topo":29,
-				"morpho":9
+				"morpho":9 
+			},
+			{
+				"topo":29,
+				"morpho":9 
+			},
+			{
+				"topo":31,
+				"morpho":9 
 			}
 		]
 	},
@@ -72,7 +104,19 @@
 		"cancers":[
 			{
 				"topo":20,
-				"morpho":16
+				"morpho":16 
+			},
+			{
+				"topo":5,
+				"morpho":5 
+			},
+			{
+				"topo":20,
+				"morpho":17 
+			},
+			{
+				"topo":52,
+				"morpho":5
 			},
 			{
 				"topo":5,

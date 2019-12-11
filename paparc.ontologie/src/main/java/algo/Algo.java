@@ -71,10 +71,13 @@ public class Algo {
 	
 	public static HashMap<String,ArrayList<String>> exemplePatient() {
 		HashMap<String,ArrayList<String>> p = new HashMap<String,ArrayList<String>>();
-		p.put("patient1",new ArrayList<String>(Arrays.asList("C00.6M9870/3","C02.1M9040/3","C05.8M8840/3","C06.9M8840/3")));
-		p.put("patient2",new ArrayList<String>(Arrays.asList("C42.1M9870/3","C42.1M9040/3","C42.1M8840/3")));
-		p.put("patient3",new ArrayList<String>(Arrays.asList("C40.1M9570/3","C12.1M9840/3","C12.1M8840/3")));
-		p.put("patient4",new ArrayList<String>(Arrays.asList("C40.1M9040/3","C30.1M9040/3","C37.1M9040/3")));
+		p.put("837404",new ArrayList<String>(Arrays.asList("C80.9M80100/3","C62.9M80106/3")));
+		p.put("468647",new ArrayList<String>(Arrays.asList("C34.8M95903/3","C26.8M95913/3")));
+		p.put("864787",new ArrayList<String>(Arrays.asList("C80.9M80000/3","C80.9M97503/3","C51.9M96503/3")));
+		p.put("103823",new ArrayList<String>(Arrays.asList("C18.2M97273/3","C38.8M98403/3","C18.2M96503/3","C54.9M80100/3","C18.2M80000/3")));
+		p.put("329048",new ArrayList<String>(Arrays.asList("C61.9M91403/3","C30.1M91403/3","C49.9M96703/3","C49.9M96733/3","C51.9M96733/3")));
+		p.put("527647",new ArrayList<String>(Arrays.asList("C34.8M87200/3","C09.9M80102/3","C34.8M80000/3","C80.9M80100/3","C09.9M82600/3")));
+		p.put("384382",new ArrayList<String>(Arrays.asList("C00.8M97401/3","C16.9M80011/3")));
 		
 		return p;
 	}
