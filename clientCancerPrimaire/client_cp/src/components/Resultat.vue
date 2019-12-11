@@ -1,22 +1,24 @@
 <template>
   <div class="container mt-4" id="app">
+            <strong>Patient : id={{patient.id}}, Nom={{patient.nom}}, Prenom={{patient.prenom}}</strong>
+
     <table class="table table-bordered">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Website</th>
-          <th scope="col">City</th>
+          <th scope="col">Morphologie</th>
+          <th scope="col">Topographie</th>
+          <th scope="col">Libellé Morpho</th>
+          <th scope="col">Libellé Topo</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(user, index) in users" v-bind:key="index">
+        <tr v-for="(cancer, index) in cancers" v-bind:key="index">
           <th scope="row">{{ index + 1 }}</th>
-          <td>{{ user.name }}</td>
-          <td>{{ user.email.toLowerCase() }}</td>
-          <td>{{ user.website }}</td>
-          <td>{{ user.address.city }}</td>
+          <td>{{ cancer.morpho }}</td>
+          <td>{{ cancer.topo }}</td>
+          <td>{{ cancer.libelleMorpho }}</td>
+          <td>{{ cancer.libelleTopo }}</td>
         </tr>
       </tbody>
     </table>
@@ -27,15 +29,19 @@
 export default {
   name: "Resultat",
   props: {
-    msg: String,
-    user: String,
+    patient: Object,
     index: Number,
-    users: Array
   },
   data() {
     return {
-      data: null
+      donnees:{},
+      cancers:[]
     };
+  },
+  mounted: function(){
+    console.log(Object.toString(this.patient))
+    console.log(Object.keys(this.patient)[0])
+    this.cancers=this.patient.cancers;
   }
 };
 </script>

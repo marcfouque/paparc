@@ -1,5 +1,5 @@
 {
-	837404 : {
+	"837404" : {
 		"prenom":"Lance",
 		"nom":"Armstrong",
 		"cancers":[
@@ -13,7 +13,7 @@
 			}
 		]
 	},
-	46864786 : {
+	"46864786" : {
 		"prenom":"Bernard",
 		"nom":"Tapie",
 		"cancers":[
@@ -27,7 +27,7 @@
 			}
 		]
 	},
-	86478796 : {
+	"86478796" : {
 		"prenom":"prenom1",
 		"nom":"nom1",
 		"cancers":[
@@ -45,7 +45,7 @@
 			}
 		]
 	},
-	1038234 : {
+	"1038234" : {
 		"prenom":"Marco",
 		"nom":"Polo",
 		"cancers":[
@@ -71,7 +71,7 @@
 			}
 		]
 	},
-	3290487 : {
+	"3290487" : {
 		"prenom":"François",
 		"nom":"Mitterand",
 		"cancers":[
@@ -97,8 +97,7 @@
 			}
 		]
 	},
-	,
-	52764785 : {
+	"52764785" : {
 		"prenom":"Pierre",
 		"nom":"Desproges",
 		"cancers":[
@@ -124,7 +123,7 @@
 			}
 		]
 	},
-	3843829 : {
+	"3843829" : {
 		"prenom":"Marc",
 		"nom":"est trop beau",
 		"cancers":[
