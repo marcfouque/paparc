@@ -84,6 +84,13 @@ public class Patient {
 	    		else {listBool815.set( ctm.getM()-8, true );}//si pas encore ajouter, on ajoute et on passe le bool a true
 	    	}
 	    	
+	    	//correction double specifique
+	    	if(ajouter && ctm.getT()==52) {
+	    		if(ctm.getM()==5) ajouter = gardePostDoubleSpecifique(listeCancerPrimaire, 1, 2, 3, 4);
+	    		else if(ctm.getM()==14) ajouter = gardePostDoubleSpecifique(listeCancerPrimaire, 8, 9, 10, 11, 12, 13);
+	    		else if(ctm.getM()==17 & listeCancerPrimaire.size()!=0) ajouter = false;
+	    	}
+	    	
 	    	if(ajouter)listeCancerPrimaire.add(ctm);
 	    }
 		//listeCancer = new ArrayList<CoupleTopoMorpho>(cancers.forEach(cimo3Couple));
@@ -95,6 +102,16 @@ public class Patient {
 		ArrayList<CoupleTopoMorpho> listeCancersSansExtRecOuMeta = cancers;
 		
 		return cancers;
+	}
+	
+	public static boolean gardePostDoubleSpecifique(ArrayList<CoupleTopoMorpho> lcp, int... morphos) {	
+		for(CoupleTopoMorpho cp  : lcp) {	//recherche de topo identiques parmi les cancers primaires, 
+			//if(cp.getT()==ctm.getT() && cp.morphoRetrieve(8,9,10,11,12,13))ajouter=false;			//si un existe alors pas d'ajout du cancer non specifique
+			for(int i=0;i<morphos.length; i++) {
+				if(cp.getM()==morphos[i])return false;
+			}
+		}
+		return true;
 	}
 	
 	public String printCPP() {
@@ -111,6 +128,5 @@ public class Patient {
 		return "\nPatient : "+this.id+"\n\tliste cancers :\t\t"+listeCancerNonCat.toString()+"\n\tListe cancers Primaire :\t"+listeCancerPrimaire.toString();
 	}
 
-	
 
 }
