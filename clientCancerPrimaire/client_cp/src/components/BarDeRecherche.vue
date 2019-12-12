@@ -13,7 +13,7 @@
         placeholder="Recherche patient"
         >
       </VueSuggestion>
-      {{patientSelectionne}}
+      <small>{{patientSelectionne}}</small>
       <!--
       -->
   </div>
@@ -22,6 +22,7 @@
 <script>
 import VueSuggestion from 'vue-suggestion'
 import ItemRecherche from './ItemRecherche.vue'
+var DONNEES = require('../../resources/patientIACR_topomorphoExemple.json')
 
 export default {
   name: 'BarDeRecherche',
@@ -69,6 +70,10 @@ export default {
       this.errors.push(e)
     })
     */
+    let temp = Object.keys(DONNEES).map(x => DONNEES[x]);
+    for(let p=0; p<temp.length; p++)temp[p]["id"]=Object.keys(DONNEES)[p];
+    console.log(temp);
+    this.listePat = temp;
   }
 }
 </script>
@@ -117,5 +122,8 @@ export default {
 }
 .vue-suggestion-list-item:hover {
   background-color: #eee;
+}
+.barrederecherche{
+  padding-top:30px;
 }
 </style>
