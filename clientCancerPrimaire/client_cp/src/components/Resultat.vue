@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(cancer, index) in cancers" v-bind:key="index">
+        <tr v-for="(cancer, index) in patient.cancers" v-bind:key="index">
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ cancer.morpho }}</td>
           <td>{{ cancer.topo }}</td>
@@ -35,21 +35,18 @@ export default {
   data() {
     return {
       donnees:{},
-      cancers:[]
+      //cancers:[]
     };
   },
   mounted: function(){
     console.log(Object.toString(this.patient))
     console.log(Object.keys(this.patient)[0])
-    this.cancers=this.patient.cancers;
-  }
+    //this.cancers=this.patient.cancers;
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.table {
-  background-color: white;
-  height: 400px;
-}
+
 </style>
