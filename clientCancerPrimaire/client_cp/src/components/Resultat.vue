@@ -6,8 +6,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Morphologie</th>
-          <th scope="col">Topographie</th>
+          <th scope="col">Groupe Morpho</th>
+          <th scope="col">Groupe Topo</th>
           <th scope="col">Libellé Morpho</th>
           <th scope="col">Libellé Topo</th>
         </tr>
