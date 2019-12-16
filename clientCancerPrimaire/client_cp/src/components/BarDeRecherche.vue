@@ -34,12 +34,6 @@ export default {
     return {
       patientSelectionne: "",
       items:[],
-      listePat: [
-        { id: 1, nom: 'nom1', prenom:"prenom1"},
-        { id: 2, nom: 'nom2', prenom:"prenom2" },
-        { id: 3, nom: 'nom3', prenom:"prenom3"},
-        { id: 0, nom: 'rrr', prenom:"bbbb"},
-      ],
       ItemRecherche,
     }
   },
