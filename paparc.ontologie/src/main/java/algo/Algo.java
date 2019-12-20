@@ -19,35 +19,39 @@ public class Algo {
 		Groupe grou = new Groupe();
 		ArrayList<CoupleTopoMorpho> pcg = grou.getPCG();
 		
-		//set d'exemple de patient
-		HashMap<String,ArrayList<String>> patients = new HashMap<String,ArrayList<String>>();
-	    patients = exemplePatient();
-	    
-	    
-		ArrayList<Patient> listePatients = new ArrayList<Patient>();
+		grou.sqlTopoNew();
+		grou.sqlMorphoNew();
+	
 		
-		//passage liste cimo3 par patient à liste de patient chacun contenant leurs cancers primaires
-		for(String p : patients.keySet()){
-				ArrayList<CoupleTopoMorpho>temp = new ArrayList<CoupleTopoMorpho>();
-				for(String c : patients.get(p)) {
-					boolean b = true;
-					ArrayList<String> al = new ArrayList<String>(Arrays.asList(grou.getGrpTopoFromCimo3(c.split("M")[0]),grou.getGrpMorphoFromCimo3(c.split("M")[1].substring(0, 4)),c.split("M")[0],c.split("M")[1].substring(0, 4)));
-					
-					if(al.get(0)!="nope" && al.get(1)!="nope")temp.add(new CoupleTopoMorpho(al.get(0),al.get(1),al.get(2),al.get(3)));
-					else System.out.println(p+" : code cimo3 non reconnu, "+c+"\n\ttopo : "+grou.getGrpTopoFromCimo3(c.split("M")[0])+"\t"+c.split("M")[0]+"\n\tmorpho: "+grou.getGrpMorphoFromCimo3(c.split("M")[1].substring(0, 4))+"\t"+c.split("M")[1].substring(0, 4));
-				}
-			   listePatients.add(new Patient(p,temp));
-			}
-		
-		System.out.println(listePatients.toString());
-		//listePatients.forEach((x)->System.out.println(x));
-		
-		
-		enregistrementCP_sql(listePatients);
+//		//set d'exemple de patient
+//		HashMap<String,ArrayList<String>> patients = new HashMap<String,ArrayList<String>>();
+//	    patients = exemplePatient();
+//	    
+//	    
+//		ArrayList<Patient> listePatients = new ArrayList<Patient>();
+//		
+//		//passage liste cimo3 par patient ï¿½ liste de patient chacun contenant leurs cancers primaires
+//		for(String p : patients.keySet()){
+//				ArrayList<CoupleTopoMorpho>temp = new ArrayList<CoupleTopoMorpho>();
+//				for(String c : patients.get(p)) {
+//					boolean b = true;
+//					ArrayList<String> al = new ArrayList<String>(Arrays.asList(grou.getGrpTopoFromCimo3(c.split("M")[0]),grou.getGrpMorphoFromCimo3(c.split("M")[1].substring(0, 4)),c.split("M")[0],c.split("M")[1].substring(0, 4)));
+//					
+//					if(al.get(0)!="nope" && al.get(1)!="nope")temp.add(new CoupleTopoMorpho(al.get(0),al.get(1),al.get(2),al.get(3)));
+//					else System.out.println(p+" : code cimo3 non reconnu, "+c+"\n\ttopo : "+grou.getGrpTopoFromCimo3(c.split("M")[0])+"\t"+c.split("M")[0]+"\n\tmorpho: "+grou.getGrpMorphoFromCimo3(c.split("M")[1].substring(0, 4))+"\t"+c.split("M")[1].substring(0, 4));
+//				}
+//			   listePatients.add(new Patient(p,temp));
+//			}
+//		
+//		System.out.println(listePatients.toString());
+//		//listePatients.forEach((x)->System.out.println(x));
+//		
+//		
+//		enregistrementCP_sql(listePatients);
 		
 	}
 	public static void enregistrementCP_sql(ArrayList<Patient> lp) {
-		//commandes pour génération fichier sql de
+		//commandes pour gï¿½nï¿½ration fichier sql de
 		String stringPrint = "Drop table if exists CancerPrimaire;\n\nCreate table CancerPrimaire (\npatient int(6),\ntopo_IACR varchar(7),\nmorpho_IACR varchar(7)\n);\n\n";
 		stringPrint +="Insert Into CancerPrimaire VALUES\n";
 		for(Patient x : lp){stringPrint += x.printCPP();}
@@ -64,7 +68,7 @@ public class Algo {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("fichier enregistré");
+		System.out.println("fichier enregistrï¿½");
 
 	}
 

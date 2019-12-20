@@ -153,20 +153,48 @@ public class Groupe {
 		}
 			
 	}
+	
+	public void sqlTopoNew() {
+		try {
+			FileWriter fw = new FileWriter("./src/main/resources/sqlTopoCimo3.sql");
+			
+			//creation table
+			fw.write("DROP TABLE IF EXISTS topoCimo3;\n");
+			fw.write("CREATE TABLE topoCimo3_groupeIACRTopo( \n");
+			fw.write("\ttopoCimo3 varchar(7) NOT NULL, \n");
+			fw.write("\tlibelleTopoCimo3 varchar(100) DEFAULT NULL, \n");
+			fw.write("\tPRIMARY KEY (topoCimo3) \n");
+			fw.write(") ENGINE=InnoDB DEFAULT CHARSET=latin1; \n\n");
+			
+			//insertion valeurs
+			fw.write("INSERT INTO topoCimo3_groupeIACRTopo (topoCimo3, libelleTopoCimo3) VALUES \n");
+			
+			for(int i =0; i<arrTopo.size(); i++) {
+				if(i==arrTopo.size()-1)fw.write("\t('"+arrTopo.get(i)[2]+"',"+arrTopo.get(i)[1]+"); \n");
+				else fw.write("('"+arrTopo.get(i)[2]+"',"+arrTopo.get(i)[1]+"), \n");
+			}
+			
+			fw.close();
+		}
+		catch(Exception e) {
+			 e.printStackTrace();
+		}
+			
+	}
 	public void sqlMorpho() {
 		try {
 			FileWriter fw = new FileWriter("./src/main/resources/sqlMorpho.sql");
 			
 			//creation table
 			fw.write("DROP TABLE IF EXISTS morphoCimo3_groupeIACRMorpho;\n");
-			fw.write("CREATE TABLE morphoCimo3_groupeIACRMorpho( \n");
+			fw.write("CREATE TABLE morphoCimo3( \n");
 			fw.write("\tmorphoCimo3 varchar(7) NOT NULL, \n");
 			fw.write("\tmorphoIACR int(2) DEFAULT NULL, \n");
 			fw.write("\tPRIMARY KEY (morphoCimo3) \n");
 			fw.write(") ENGINE=InnoDB DEFAULT CHARSET=latin1; \n\n");
 			
 			//insertion valeurs
-			fw.write("INSERT INTO morphoCimo3_groupeIACRMorpho (morphoCimo3, morphoIACR) VALUES \n");
+			fw.write("INSERT INTO morphoCimo3 (morphoCimo3, morphoIACR) VALUES \n");
 			
 			for(int i =0; i<arrMorpho.size(); i++) {
 				if(i==arrMorpho.size()-1)fw.write("\t('"+arrMorpho.get(i)[0]+"',"+arrMorpho.get(i)[3]+"); \n");
@@ -179,8 +207,36 @@ public class Groupe {
 			 e.printStackTrace();
 		}
 	}
+	
+	public void sqlMorphoNew() {
+		try {
+			FileWriter fw = new FileWriter("./src/main/resources/sqlMorphoCimo3.sql");
+			
+			//creation table
+			fw.write("DROP TABLE IF EXISTS morphoCimo3;\n");
+			fw.write("CREATE TABLE morphoCimo3_groupeIACRMorpho( \n");
+			fw.write("\tmorphoCimo3 varchar(7) NOT NULL, \n");
+			fw.write("\tlibelleMorphoCimo3 varchar(100) DEFAULT NULL, \n");
+			fw.write("\tPRIMARY KEY (morphoCimo3) \n");
+			fw.write(") ENGINE=InnoDB DEFAULT CHARSET=latin1; \n\n");
+			
+			//insertion valeurs
+			fw.write("INSERT INTO morphoCimo3 (morphoCimo3, libelleMorphoCimo3) VALUES \n");
+			
+			for(int i =0; i<arrMorpho.size(); i++) {
+				if(i==arrMorpho.size()-1)fw.write("\t('"+arrMorpho.get(i)[0]+"',"+arrMorpho.get(i)[1]+"); \n");
+				else fw.write("('"+arrMorpho.get(i)[0]+"',"+arrMorpho.get(i)[1]+"), \n");
+			}
+			
+			fw.close();
+		}
+		catch(Exception e) {
+			 e.printStackTrace();
+		}
+	}
+	
 	public void topoLibJSON() {
-		//fait à l'ancienne avec des regex
+		//fait ï¿½ l'ancienne avec des regex
 		/*
 		ArrayList<String> temp = new ArrayList<String>();
 		JSONArray jsArray = new JSONArray();
