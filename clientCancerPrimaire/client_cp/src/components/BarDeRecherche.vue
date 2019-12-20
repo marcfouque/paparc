@@ -46,11 +46,10 @@ export default {
   methods: {
     itemSelected (item) {
       this.patientSelectionne = item;
-
       this.$emit('patient_choisi', item)
 
       this.items=[];
-      alert("requete ajax vers l'api pour récupérer les informations du patient")
+      //alert("requete ajax vers l'api pour récupérer les informations du patient")
     },
     setLabel (item) {
       return item.id+" - "+item.prenom+" "+item.nom;
@@ -72,7 +71,6 @@ export default {
     */
     let temp = Object.keys(DONNEES).map(x => DONNEES[x]);
     for(let p=0; p<temp.length; p++)temp[p]["id"]=Object.keys(DONNEES)[p];
-    console.log(temp);
     this.listePat = temp;
   }
 }
