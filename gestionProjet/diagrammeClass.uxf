@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>196</y>
+      <w>336</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>outils::CoupleTopoMorpho
+--
+-gTopo: int
+-gMorpho: int
+-topoCimO: String
+-morphoCimO: int
+--
++CoupleTopoMorpho(String gt, String gm, String codet, String codem): ctor
++CoupleTopoMorpho(String gt, String gm): ctor
++getT(): int
++getM(): int
++memeTopo(CoupleTopoMorpho c): boolean
++memeMorpho(CoupleTopoMorpho c): boolean
++morphoRetrieve(int... morpho): boolean
++equals(Object obj): boolean
++toString(): String
++compareTo(//compare desc&#13;
+CoupleTopoMorpho ctm): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>371</x>
+      <y>21</y>
+      <w>259</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>outils::Groupe
+--
+-arrTopo: ArrayList&lt;String[]&gt;
+-arrMorpho: ArrayList&lt;String[]&gt;
+-listCodeTopo: ArrayList&lt;String&gt;
+-listCodeMorpho: ArrayList&lt;String&gt;
+-listCimo3: ArrayList&lt;ArrayList&gt;
+--
++Groupe(): ctor
+-getGroupeTopo(): ArrayList
+-getGroupeMorpho(): ArrayList
++getGT(): ArrayList&lt;String&gt;
++getGM(): ArrayList&lt;String&gt;
++getPCG(): ArrayList&lt;CoupleTopoMorpho&gt;
++getGrpTopoFromCimo3(String cimo3Topo): String
++getGrpMorphoFromCimo3(String cimo3Morpho): String
++sqlTopo(): void
++sqlMorpho(): void
++topoLibJSON(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>294</x>
+      <y>483</y>
+      <w>420</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>algo::Patient
+--
+-id: String
+-listeCancerNonCat: ArrayList&lt;CoupleTopoMorpho&gt;
+-listeCancerPrimaire: ArrayList&lt;CoupleTopoMorpho&gt;
+--
++Patient(String id, ArrayList&lt;CoupleTopoMorpho&gt; cancers): ctor
++applicationRegle2(ArrayList&lt;CoupleTopoMorpho&gt; cancers): ArrayList&lt;CoupleTopoMorpho&gt;
++gardePostDoubleSpecifique(ArrayList&lt;CoupleTopoMorpho&gt; lcp, int... morphos): boolean
++printCPP(): String
++toString(): String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>42</x>
+      <y>280</y>
+      <w>259</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>algo::Algo
+--
+--
++main(String[] args): void
++enregistrementCP_sql(ArrayList&lt;Patient&gt; lp): void
++exemplePatient(): HashMap&lt;String, ArrayList&lt;String&gt;&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>497</x>
+      <y>364</y>
+      <w>203</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1.n</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>245</y>
+      <w>35</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>497</x>
+      <y>245</y>
+      <w>203</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0;270.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>322</y>
+      <w>133</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0;170.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>245</y>
+      <w>133</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;90.0;170.0;90.0;170.0;10.0</additional_attributes>
+  </element>
+</diagram>

@@ -24,16 +24,16 @@ export default {
   },
   data () {
     return {
-		patient: {"id":"","nom":"","prenom":"","cancers":[]},
+		patient: {"id":"","nom":"","prenom":"","cancers":[],"cancersPrimaires":[]},
     affTab:false
     }
   },
 
   methods:{
     changePatientChoisi(p){
-      for(let i=0;i<p['cancers'].length;i++){
-        p['cancers'][i]['libelleTopo']=TOPO[p['cancers'][i]['topo']];
-        p['cancers'][i]['libelleMorpho']=MORPHO[p['cancers'][i]['morpho']];
+      for(let i=0;i<p['cancersPrimaires'].length;i++){
+        p['cancersPrimaires'][i]['libelleTopo']=TOPO[p['cancersPrimaires'][i]['topo']];
+        p['cancersPrimaires'][i]['libelleMorpho']=MORPHO[p['cancersPrimaires'][i]['morpho']];
       }
       this.patient = p;
       this.affTab = true;
@@ -56,6 +56,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: auto auto;
-  width: 75%;
 }
 </style>

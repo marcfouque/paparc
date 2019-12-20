@@ -2,7 +2,17 @@
 	"837404" : {
 		"prenom":"Lance",
 		"nom":"Armstrong",
+		"cancersPrimaires":[
+			{
+				"topo":41,
+				"morpho":5
+			}
+		],
 		"cancers":[
+			{
+				"topo":62,
+				"morpho":5
+			},
 			{
 				"topo":41,
 				"morpho":5
@@ -12,7 +22,17 @@
 	"46864786" : {
 		"prenom":"Bernard",
 		"nom":"Tapie",
+		"cancersPrimaires":[
+			{
+				"topo":16,
+				"morpho":14
+			}
+		],
 		"cancers":[
+			{
+				"topo":20,
+				"morpho":14
+			},
 			{
 				"topo":16,
 				"morpho":14
@@ -22,7 +42,21 @@
 	"86478796" : {
 		"prenom":"prenom1",
 		"nom":"nom1",
+		"cancersPrimaires":[
+			{
+				"topo":52,
+				"morpho":13
+			},
+			{
+				"topo":31,
+				"morpho":11
+			}
+		],
 		"cancers":[
+			{
+				"topo":52,
+				"morpho":17
+			},
 			{
 				"topo":52,
 				"morpho":13
@@ -36,7 +70,7 @@
 	"1038234" : {
 		"prenom":"Marco",
 		"nom":"Polo",
-		"cancers":[
+		"cancersPrimaires":[
 			{
 				"topo":22,
 				"morpho":8
@@ -49,12 +83,34 @@
 				"topo":34,
 				"morpho":5
 			}
+		],
+		"cancers":[
+			{
+				"topo":10,
+				"morpho":14
+			},
+			{
+				"topo":22,
+				"morpho":8
+			},
+			{
+				"topo":10,
+				"morpho":11
+			},
+			{
+				"topo":34,
+				"morpho":5
+			},
+			{
+				"topo":10,
+				"morpho":17
+			}
 		]
 	},
 	"3290487" : {
 		"prenom":"François",
 		"nom":"Mitterand",
-		"cancers":[
+		"cancersPrimaires":[
 			{
 				"topo":40,
 				"morpho":15
@@ -63,15 +119,59 @@
 				"topo":29,
 				"morpho":9
 			}
+		],
+		"cancers":[
+			{
+				"topo":40,
+				"morpho":15
+			},
+			{
+				"topo":17,
+				"morpho":15
+			},
+			{
+				"topo":29,
+				"morpho":9
+			},
+			{
+				"topo":29,
+				"morpho":9
+			},
+			{
+				"topo":31,
+				"morpho":9
+			}
 		]
 	},
 	"52764785" : {
 		"prenom":"Pierre",
 		"nom":"Desproges",
+		"cancersPrimaires":[
+			{
+				"topo":20,
+				"morpho":16
+			},
+			{
+				"topo":5,
+				"morpho":3
+			}
+		],
 		"cancers":[
 			{
 				"topo":20,
 				"morpho":16
+			},
+			{
+				"topo":5,
+				"morpho":5
+			},
+			{
+				"topo":20,
+				"morpho":17
+			},
+			{
+				"topo":52,
+				"morpho":5
 			},
 			{
 				"topo":5,
@@ -82,6 +182,16 @@
 	"3843829" : {
 		"prenom":"Marc",
 		"nom":"est trop beau",
+		"cancersPrimaires":[
+			{
+				"topo":1,
+				"morpho":12
+			},
+			{
+				"topo":8,
+				"morpho":17
+			}
+		],
 		"cancers":[
 			{
 				"topo":1,
