@@ -14,15 +14,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(cancer, index) in patient.cancersPrimaires" v-bind:key="index">
+          <tr v-for="(cancer, index) in patient.cancers" v-bind:key="index">
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ cancer.morpho }}</td>
-            <td>{{ cancer.topo }}</td>
-            <td>{{ cancer.libelleMorpho }}</td>
-            <td>{{ cancer.libelleTopo }}</td>
-          </tr>
-          <tr v-for="(cancer, index) in patient.cancersPrimaires" v-bind:key="index">
-            <th scope="row">{{ 3+ index + 1 }}</th>
             <td>{{ cancer.morpho }}</td>
             <td>{{ cancer.topo }}</td>
             <td>{{ cancer.libelleMorpho }}</td>

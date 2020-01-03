@@ -14,8 +14,6 @@
         >
       </VueSuggestion>
       <small>{{patientSelectionne}}</small>
-      <!--
-      -->
   </div>
 </template>
 
@@ -23,7 +21,6 @@
 import VueSuggestion from 'vue-suggestion'
 import ItemRecherche from './ItemRecherche.vue'
 var DONNEES = require('../../resources/patientIACR_topomorphoExemple.json')
-
 export default {
   name: 'BarDeRecherche',
   components: {
@@ -41,7 +38,6 @@ export default {
     itemSelected (item) {
       this.patientSelectionne = item;
       this.$emit('patient_choisi', item)
-
       this.items=[];
       //alert("requete ajax vers l'api pour récupérer les informations du patient")
     },
@@ -117,5 +113,7 @@ export default {
 }
 .barrederecherche{
   padding-top:30px;
+  width:80%;
+  margin:auto auto;
 }
 </style>

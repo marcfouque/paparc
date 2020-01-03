@@ -35,6 +35,10 @@ export default {
         p['cancersPrimaires'][i]['libelleTopo']=TOPO[p['cancersPrimaires'][i]['topo']];
         p['cancersPrimaires'][i]['libelleMorpho']=MORPHO[p['cancersPrimaires'][i]['morpho']];
       }
+      for(let i=0;i<p['cancers'].length;i++){
+        p['cancers'][i]['libelleTopo']=TOPO[p['cancers'][i]['topo']];
+        p['cancers'][i]['libelleMorpho']=MORPHO[p['cancers'][i]['morpho']];
+      }
       this.patient = p;
       this.affTab = true;
     }
