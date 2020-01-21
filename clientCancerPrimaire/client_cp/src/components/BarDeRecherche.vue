@@ -13,7 +13,7 @@
         placeholder="Recherche patient"
         >
       </VueSuggestion>
-      <small>{{patientSelectionne}}</small>
+      
   </div>
 </template>
 
